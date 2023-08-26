@@ -72,10 +72,10 @@ async def on_message(message):
                     with open(video_filename, 'wb') as f:
                         f.write(video_data)
                     video_file = discord.File(video_filename)
-                    await message.reply(embed=embed, file=video_file)
+                    await message.reply(embed=embed, file=video_file, allowed_mentions=discord.AllowedMentions(replied_user=False))
                     os.remove(video_filename)
                 else:
-                    await message.reply(embed=embed)
+                    await message.reply(embed=embed, allowed_mentions=discord.AllowedMentions(replied_user=False))
                 
             except Exception as e:
                 await message.reply("글 요약에러.")
